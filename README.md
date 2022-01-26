@@ -15,12 +15,10 @@
 ├── package-lock.json  
 └── package.json  
 
-### http部分 2022-1-26
-##### 支持redis
-##### 支持rabbitmq
-##### 支持postgresql数据库
+### http服务部分 2022-1-26
+##### 基于koa
+##### 缓存  支持redis
+##### 消息队列  rabbitmq
+##### 数据存储 postgresql数据库
 
-### http部分基于koa搭建 2022-1-20
-##### 支持redis
-##### 支持rabbitmq
-##### 支持postgresql数据库
+### 主体使用nodejs搭建 2022-1-20
