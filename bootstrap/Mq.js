@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 11:38:02
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-24 16:05:03
+ * @LastEditTime: 2022-01-26 15:54:45
  * @Description: mqtt class
  */
 
@@ -51,16 +51,17 @@ class RabbitMQ {
                         }, 500)
                     });
             })
-            .catch(function () {
+            .catch(function (err) {
                 let num = self.index++;
 
                 if (num <= self.length - 1) {
                     self.open = amqp.connect(self.hosts[num]);
                 } else {
-                    self.index == 0;
+                    self.index = 0;
                 }
             });
     }
+
     receive(queueName, receiveCallBack, errCallBack) {
         let self = this;
 
@@ -93,20 +94,20 @@ class RabbitMQ {
                     self.open = amqp.connect(self.hosts[num]);
                 } else {
                     self.index = 0;
-                    self.open = amqp.connect(self.hosts[0]);
                 }
             });
     }
-    test(){
+
+    test() {
         let mq = this;
         mq.send('testQueue', 'test', (error) => {
-            error 
-            ? debug('rabbit 发布自检结束',error)
-            : debug('rabbit 发布自检错误',error);
+            error
+                ? debug('rabbit 发布自检结束', error)
+                : debug('rabbit 发布自检错误', error);
         })
 
         mq.receive('testQueue', (msg) => {
-            debug('rabbit 订阅自检结束',msg);
+            debug('rabbit 订阅自检结束', msg);
         })
     }
 }

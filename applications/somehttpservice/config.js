@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 15:48:59
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 14:35:21
+ * @LastEditTime: 2022-01-26 15:57:52
  * @Description: service config file
  */
 
@@ -19,7 +19,22 @@ const options = {
             user: 'postgres',
             password: 'postgres',
             database: 'postgres',
-    }
+    },
+    serv_mqtt: [{
+        hostname: 'localhost'
+        , port: 5672
+        , username: 'guest'
+        , password: 'guest'
+        , authMechanism: 'AMQPLAIN'
+        , pathname: '/'
+        , ssl: {
+                enabled: false
+            }
+        }],
+    serv_redis: [{
+            port: 6379,
+            hostname: 'localhost',
+        }],
 }
 
 process.env[options.serv_name] = options;

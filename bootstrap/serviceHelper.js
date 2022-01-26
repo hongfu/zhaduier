@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 17:02:59
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 14:28:59
+ * @LastEditTime: 2022-01-26 15:59:48
  * @Description: service helper file 扩展koa类 支持json输出 
  */
 
@@ -109,8 +109,8 @@ class KoaExt extends Koa{
         this.context.HttpResponse = HttpResponse;
         this.context.HttpError = HttpError;
         this.context.db = new DB(config.serv_database);
-        this.context.mq = new MQ();
-        this.context.redis = new RD();
+        this.context.mqtt = new MQ(config.serv_mqtt);
+        this.context.cache = new RD(config.serv_redis);
     }
 }
 

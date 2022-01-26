@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-26 13:48:46
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 14:15:28
+ * @LastEditTime: 2022-01-26 15:56:17
  * @Description: readme file
 -->
 # zhaduier
@@ -26,6 +26,9 @@
 ├── node_modules  
 ├── package-lock.json  
 └── package.json  
+
+##未来
+mqtt配置文件错误导致的异常需要捕获处理,另外由于性能考虑不能每次重新建立连接，需要保存channel实例使用
 
 ### http服务部分 2022-1-26
 ##### 基于koa
