@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-26 13:48:46
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 14:02:29
+ * @LastEditTime: 2022-01-26 14:08:02
  * @Description: readme file
 -->
 # zhaduier
@@ -17,7 +17,7 @@
 ├── bin  
 │   └── bootstrap #框架入口  
 ├── bootstrap #框架支持文件存放目录  
-│   └── .
+│   └── .  
 ├── node_modules  
 ├── package-lock.json  
 └── package.json  
