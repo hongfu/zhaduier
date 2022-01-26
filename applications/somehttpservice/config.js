@@ -2,14 +2,9 @@
  * @Author: hongfu
  * @Date: 2022-01-24 15:48:59
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 14:04:58
+ * @LastEditTime: 2022-01-26 14:35:21
  * @Description: service config file
  */
-!process.env.FRAMENAME == 'hongfu' && process.exit(1);
-
-const debug = require('debug')(process.env.ENV_MODE + ':' + __filename)
-
-debug('service started');
 
 const options = {
     serv_name: 'somehttpservice',
@@ -23,7 +18,7 @@ const options = {
             host: 'localhost',
             user: 'postgres',
             password: 'postgres',
-            database: 'ncm',
+            database: 'postgres',
     }
 }
 

@@ -3,10 +3,11 @@
  * @Author: hongfu
  * @Date: 2022-01-23 10:03:25
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 14:04:35
+ * @LastEditTime: 2022-01-26 14:33:19
  * @Description: 服务端主框架入口
  */
-//全局环境变量导入
+
+//将框架默认配置以全局环境变量导入
 const ENV = require('../.env');
 process.env = ENV;
 

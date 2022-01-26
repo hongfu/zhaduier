@@ -2,12 +2,11 @@
  * @Author: hongfu
  * @Date: 2022-01-24 15:45:06
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 14:03:14
+ * @LastEditTime: 2022-01-26 14:34:55
  * @Description: service entry file
  */
-!process.env.FRAMENAME == 'hongfu' && process.exit(1);
 
-const debug = require('debug')(process.env.ENV_MODE + ':xcx_nuochema_api')
+const debug = require('debug')('dev:' + __filename);
 
 const { serviceHelper } = require('../../bootstrap/Helpers');
 

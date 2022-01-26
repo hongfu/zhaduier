@@ -10,17 +10,11 @@
   "author": "hongfu",
   "license": "ISC",
   "dependencies": {
-    "@koa/multer": "^3.0.0",
     "amqplib": "^0.8.0",
     "debug": "^4.3.3",
-    "gm": "^1.23.1",
-    "got": "^11.8.2",
     "koa": "^2.7.0",
     "koa-body": "^4.2.0",
-    "koa-logger": "^3.2.1",
     "koa-router": "^10.1.1",
-    "koa-send": "^5.0.1",
-    "multer": "^1.4.3",
     "pg": "^8.7.1",
     "redis": "^3.1.2"
   }

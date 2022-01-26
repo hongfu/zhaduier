@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 17:02:59
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-25 13:10:48
+ * @LastEditTime: 2022-01-26 14:28:59
  * @Description: service helper file 扩展koa类 支持json输出 
  */
 
@@ -24,8 +24,10 @@ const RD = require('./Redis');
 
 
 /**
- * @description: 封装api返回内容
- * @param {*}
+ * @description: 封装返回
+ * @param {*} code 返回code
+ * @param {*} message 信息
+ * @param {*} result 数据
  * @return {*}
  */
  class HttpResponse extends Error{
@@ -39,8 +41,11 @@ const RD = require('./Redis');
 
 
 /**
- * @description: 封装错误信息
- * @param {*}
+ * @description: 自定义错误信息
+ * @param {*} message 信息提示
+ * @param {*} url 请求路径
+ * @param {*} path 文件路径
+ * @param {*} error 错误
  * @return {*}
  */
 class HttpError extends Error{
@@ -55,7 +60,7 @@ class HttpError extends Error{
 
 
 /**
- * @description: 扩展异常处理
+ * @description: http服务采用异常捕获方式处理输出和错误信息
  * @param {*} ctx
  * @param {*} next
  * @return {*}
@@ -80,11 +85,7 @@ const KoaHandler = async (ctx, next) => {
                 state: e
             }
         } else if (error instanceof HttpError) {
-            debug('BXP:-------------message--------------//  ' + error.message)
-            debug('BXP:-------------url------------------//  ' + error.url)
-            debug('BXP:-------------dest-----------------//  ' + error.path)
-            debug('BXP:-------------error----------------//  ')
-            debug(error.error)
+            debug(error)
         } else {
             throw error
         }
@@ -101,7 +102,7 @@ class KoaExt extends Koa{
     constructor(config){
         super();
         this.use(KoaHandler)//异常处理
-        .use(KoaBody({ 
+        .use(KoaBody({ // 这里是为了将来扩展上传预留设置，如果不用对应插件可不设置
             multipart: false 
         }));
         this.context.config = config;
