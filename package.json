@@ -1,7 +1,7 @@
 {
-  "name": "yuanjiao",
+  "name": "zhaduier",
   "version": "0.0.1",
-  "description": "service code",
+  "description": "One nodejs backend framework",
   "main": "index.js",
   "scripts": {
     "dev": "supervisor bin/bootstrap",

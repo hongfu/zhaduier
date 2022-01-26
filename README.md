@@ -1,3 +1,10 @@
+<!--
+ * @Author: hongfu
+ * @Date: 2022-01-26 13:48:46
+ * @LastEditors: hongfu
+ * @LastEditTime: 2022-01-26 14:02:29
+ * @Description: readme file
+-->
 # zhaduier
 基于nodejs展开的后端服务框架，使用过程中会不断完善
 
@@ -20,5 +27,7 @@
 ##### 缓存  支持redis
 ##### 消息队列  rabbitmq
 ##### 数据存储 postgresql数据库
+
+环境配置可采用docker，直接默认安装和启动，端口参照 .env 设置端口暴露即可
 
 ### 主体使用nodejs搭建 2022-1-20

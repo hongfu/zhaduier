@@ -2,15 +2,17 @@
  * @Author: hongfu
  * @Date: 2022-01-24 15:48:59
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-25 13:10:37
- * @Description: nuochema config file
+ * @LastEditTime: 2022-01-26 14:04:58
+ * @Description: service config file
  */
 !process.env.FRAMENAME == 'hongfu' && process.exit(1);
 
-const debug = require('debug')(process.env.ENV_MODE + ':xcx_nuochema_api_config')
+const debug = require('debug')(process.env.ENV_MODE + ':' + __filename)
+
+debug('service started');
 
 const options = {
-    serv_name: 'xcx_nuochema_api',
+    serv_name: 'somehttpservice',
     serv_type: 'http',
     serv_host: 'localhost',
     serv_port: 3001,

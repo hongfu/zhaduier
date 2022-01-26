@@ -2,8 +2,8 @@
  * @Author: hongfu
  * @Date: 2022-01-24 15:45:06
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-25 12:44:11
- * @Description: nuochema entry file
+ * @LastEditTime: 2022-01-26 14:03:14
+ * @Description: service entry file
  */
 !process.env.FRAMENAME == 'hongfu' && process.exit(1);
 

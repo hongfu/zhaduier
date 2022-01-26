@@ -3,7 +3,7 @@
  * @Author: hongfu
  * @Date: 2022-01-23 10:03:25
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-25 13:07:05
+ * @LastEditTime: 2022-01-26 14:04:35
  * @Description: 服务端主框架入口
  */
 //全局环境变量导入
@@ -47,7 +47,7 @@ const start_http_service = (app) => {
 *此处添加服务列表
 */
 const services_list = [
-  require('../applications/xcx_nuochema_api'),
+  require('../applications/somehttpservice'),
 ];
 
 
