@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-26 13:48:46
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 15:56:17
+ * @LastEditTime: 2022-01-26 17:22:18
  * @Description: readme file
 -->
 # zhaduier
@@ -35,6 +35,7 @@ mqtt配置文件错误导致的异常需要捕获处理,另外由于性能考虑
 ##### 缓存  支持redis
 ##### 消息队列  rabbitmq
 ##### 数据存储 postgresql数据库
+目前使用了sequelize
 
 环境配置可采用docker，直接默认安装和启动，端口参照 .env 设置端口暴露即可
 
