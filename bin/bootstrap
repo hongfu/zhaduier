@@ -1,0 +1,132 @@
+#!/usr/bin/env node
+/*
+ * @Author: hongfu
+ * @Date: 2022-01-23 10:03:25
+ * @LastEditors: hongfu
+ * @LastEditTime: 2022-01-25 13:07:05
+ * @Description: 服务端主框架入口
+ */
+//全局环境变量导入
+const ENV = require('../.env');
+process.env = ENV;
+
+const debug = require('debug')(process.env.ENV_MODE + ':Bootstrap')
+
+const { MQ, DB, RD } = require('../bootstrap/Helpers')
+
+/**
+ * @description: 框架自检
+ * @param {*}
+ * @return {*}
+ */
+const checkEnv = () => {
+  new MQ().test();
+  new RD().test();
+  new DB().test();
+}
+
+checkEnv();
+
+/**
+ * @description: 启动http服务
+ * @param {*} app
+ * @param {*} options
+ * @return {*}
+ */
+const start_http_service = (app) => {
+  let http = require('http');
+  let server = http.createServer(app.callback());
+  server.serv_name = app.context.config.serv_name
+  server.listen(normalizePort(app.context.config.serv_port), app.context.config.serv_host);
+  server.on('error', onError);
+  server.on('listening', onListening);
+}
+
+
+/*
+*此处添加服务列表
+*/
+const services_list = [
+  require('../applications/xcx_nuochema_api'),
+];
+
+
+//服务加载
+for (let i = 0; i < services_list.length; i++) {
+  let serv = services_list[i];
+  serv.context.config.serv_type == 'http' && start_http_service(serv);
+}
+
+//框架异常捕获
+process.on('uncaughtException', (err) => {
+  debug('框架未实现捕获的异常')
+  debug(err)
+  process.exit(1)
+})
+
+
+/**
+ * @description: 读取设定端口字符串处理
+ * @param {*}
+ * @return {*}
+ */
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+
+/**
+ * @description: 服务启动出错的捕获和提示
+ * @param {*}
+ * @return {*}
+ */
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? '管道 ' + port
+    : '端口 ' + port;
+
+
+  switch (error.code) {
+    case 'EACCES':
+      debug(bind + '权限不足');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      debug(bind + '被占用');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+
+/**
+ * @description: 访问监听调试
+ * @param {*}
+ * @return {*}
+ */
+function onListening() {
+  let addr = this.address();
+  let serv_name = this.serv_name;
+  let bind = typeof addr === 'string'
+    ? '管道 ' + addr
+    : '端口 ' + addr.port;
+  debug(serv_name + '服务成功加载至' + bind);
+}
