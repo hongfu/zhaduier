@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-28 12:48:30
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 13:42:29
+ * @LastEditTime: 2022-01-28 13:46:38
  * @Description: About file
  */
 
@@ -11,6 +11,11 @@
 const debug = require('debug')(process.env.ENV_MODE + ':' + __filename)
 
 const Utils = {
+    /**
+     * @description: 异常捕获的友好处理(不断增加)
+     * @param {*}
+     * @return {*}
+     */    
     errorParse: (err)=>{
         let ret = ''
         if(err.port && err.syscall=='connect' && err.code=='ECONNREFUSED'){

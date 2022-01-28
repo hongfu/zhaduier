@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 11:38:02
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 13:32:19
+ * @LastEditTime: 2022-01-28 13:45:46
  * @Description: DB class
  */
 
@@ -20,6 +20,10 @@ class DB {
         this.options = opt || options;
         const Sequelize = require('sequelize')
         this.db = new Sequelize(this.options)
+    }
+
+    closeConn() {
+        this.db.close()
     }
 
     async test() {

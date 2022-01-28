@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 11:38:02
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 11:38:29
+ * @LastEditTime: 2022-01-28 13:49:29
  * @Description: mqtt class
  */
 
@@ -22,7 +22,14 @@ class RabbitMQ {
         this.hosts = opt || options;
         this.mq = amqp.connect(options[0]);
     }
-    send(queueName, msg, errCallBack) {
+    /**
+     * @description: 发布消息
+     * @param {*} queueName 队列
+     * @param {*} msg 内容
+     * @param {*} runCallBack 回调
+     * @return {*}
+     */    
+    send(queueName, msg, runCallBack) {
 
         this.mq.then(async (conn) => {
             return conn.createChannel().then(async (ch) => {
@@ -31,13 +38,19 @@ class RabbitMQ {
                     persistent: true
                 });
                 return ch.close();
+                runCallBack && runCallBack();
             }).catch(err => debug('发布频道错误', err))
         }).catch(err => debug('发布连接错误', err))
 
     }
 
-
-    receive(queueName, receiveCallBack, errCallBack) {
+    /**
+     * @description: 订阅消息
+     * @param {*} queueName 队列
+     * @param {*} receiveCallBack 回调
+     * @return {*}
+     */
+    receive(queueName, receiveCallBack) {
         let self = this;
 
         self.mq.then(async (conn) => {
