@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-26 13:48:46
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 14:27:36
+ * @LastEditTime: 2022-01-28 22:35:01
  * @Description: readme file
 -->
 # zhaduier
@@ -14,14 +14,15 @@
 │   ├── servicename #某个服务，以单独目录方式开发  
 │   │   ├── config.js #服务单独配置文件，优先级高于框架基础配置   
 │   │   └── index.js #服务入口  
+│   └── servicesList.js #要启动的服务列表  
 ├── bin  
 │   └── bootstrap #框架入口  
 ├── bootstrap #框架支持文件存放目录  
-│   ├── Mq.js #mqtt  
-│   ├── DBHelper.js #数据库  
-│   ├── Redis #Redis #redis主要作为缓存和将来可能涉及的调度管理  
-│   ├── serviceHelper.js #服务类型定义支持  
-│   ├── Helpers.js #没有用遍历引用，所以这个是挂载列表  
+│   ├── vendor #框架扩展支持  
+│   ├── helper #服务类型  
+│   ├── utils.js #框架用到的一些函数方法  
+│   ├── services.js #服务类型列表  
+│   ├── vendor.js #没有用遍历引用，所以这个是挂载列表  
 │   └── ...  
 ├── node_modules  
 ├── package-lock.json  
