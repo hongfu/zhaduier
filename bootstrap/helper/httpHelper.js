@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 17:02:59
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 15:59:48
+ * @LastEditTime: 2022-01-28 12:47:58
  * @Description: service helper file 扩展koa类 支持json输出 
  */
 
@@ -14,9 +14,7 @@ const debug = require('debug')(process.env.ENV_MODE + ':ApiHelper')
 const Koa =  require('koa');
 const KoaBody = require('koa-body');
 
-const DB = require('./DBHelper');
-const MQ = require('./Mq');
-const RD = require('./Redis');
+const { DB,MQ,RD } = require('../vendor');
 
 /**
  * 对koa的扩展
@@ -108,13 +106,11 @@ class KoaExt extends Koa{
         this.context.config = config;
         this.context.HttpResponse = HttpResponse;
         this.context.HttpError = HttpError;
-        this.context.db = new DB(config.serv_database);
-        this.context.mqtt = new MQ(config.serv_mqtt);
-        this.context.cache = new RD(config.serv_redis);
+        config.serv_database_use && (this.context.db = new DB(config.serv_database));
+        config.serv_mqtt_use && (this.context.mqtt = new MQ(config.serv_mqtt));
+        config.serv_redis_use && (this.context.redis = new RD(config.serv_redis));
     }
 }
 
 
-module.exports = {
-    HttpService: KoaExt,
-}
+module.exports = KoaExt

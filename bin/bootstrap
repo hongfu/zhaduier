@@ -3,7 +3,7 @@
  * @Author: hongfu
  * @Date: 2022-01-23 10:03:25
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 14:33:19
+ * @LastEditTime: 2022-01-28 13:33:58
  * @Description: 服务端主框架入口
  */
 
@@ -13,20 +13,7 @@ process.env = ENV;
 
 const debug = require('debug')(process.env.ENV_MODE + ':Bootstrap')
 
-const { MQ, DB, RD } = require('../bootstrap/Helpers')
-
-/**
- * @description: 框架自检
- * @param {*}
- * @return {*}
- */
-const checkEnv = () => {
-  new MQ().test();
-  new RD().test();
-  new DB().test();
-}
-
-checkEnv();
+const U = require('../bootstrap/utils')
 
 /**
  * @description: 启动http服务
@@ -45,13 +32,9 @@ const start_http_service = (app) => {
 
 
 /*
-*此处添加服务列表
+*需要启动的服务列表
 */
-const services_list = [
-  require('../applications/somehttpservice'),
-];
-
-
+const services_list = require('../applications/servicesList');
 //服务加载
 for (let i = 0; i < services_list.length; i++) {
   let serv = services_list[i];
@@ -60,9 +43,12 @@ for (let i = 0; i < services_list.length; i++) {
 
 //框架异常捕获
 process.on('uncaughtException', (err) => {
-  debug('框架未实现捕获的异常')
-  debug(err)
+  debug('框架启动异常：'+U.errorParse(err))
   process.exit(1)
+})
+
+process.on('unhandledRejection', (err) => {
+  debug('框架捕获异常:'+U.errorParse(err))
 })
 
 
@@ -128,6 +114,6 @@ function onListening() {
   let serv_name = this.serv_name;
   let bind = typeof addr === 'string'
     ? '管道 ' + addr
-    : '端口 ' + addr.port;
+    : '端口 http://' + addr.address + ':' +addr.port;
   debug(serv_name + '服务成功加载至' + bind);
 }

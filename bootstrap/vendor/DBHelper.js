@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 11:38:02
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 16:50:44
+ * @LastEditTime: 2022-01-28 13:32:19
  * @Description: DB class
  */
 
@@ -26,10 +26,10 @@ class DB {
         let _self = this
         try {
             await _self.db.authenticate();
-            debug('数据库连接正常');
-        } catch (error) {
-            debug('数据库连接失败:', error);
-        }
+            debug('数据库连接成功');
+          } catch (error) {
+            throw error.original
+          }
     }
 }
 

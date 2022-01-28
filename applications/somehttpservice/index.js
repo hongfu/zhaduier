@@ -2,15 +2,15 @@
  * @Author: hongfu
  * @Date: 2022-01-24 15:45:06
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-26 14:34:55
+ * @LastEditTime: 2022-01-28 12:44:59
  * @Description: service entry file
  */
 
 const debug = require('debug')('dev:' + __filename);
 
-const { serviceHelper } = require('../../bootstrap/Helpers');
+const { HttpService } = require('../../bootstrap/services');
 
-const app = new serviceHelper.HttpService(require('./config'));
+const app = new HttpService(require('./config'));
 
 const route = require('./router.js')
 
