@@ -4,7 +4,7 @@
   "description": "One nodejs backend framework",
   "main": "index.js",
   "scripts": {
-    "dev": "supervisor bin/bootstrap",
+    "dev": "supervisor -p 3000 bin/bootstrap",
     "test": "node bin/bootstrap"
   },
   "author": "hongfu",

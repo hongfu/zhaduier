@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 11:38:02
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 13:45:46
+ * @LastEditTime: 2022-01-28 18:15:11
  * @Description: DB class
  */
 
@@ -22,6 +22,10 @@ class DB {
         this.db = new Sequelize(this.options)
     }
 
+    getConn(){
+        return this.db
+    }
+
     closeConn() {
         this.db.close()
     }
@@ -32,7 +36,7 @@ class DB {
             await _self.db.authenticate();
             debug('数据库连接成功');
           } catch (error) {
-            throw error.original
+            debug('数据库连接失败');
           }
     }
 }

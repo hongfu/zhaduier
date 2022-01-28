@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-28 12:48:30
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 13:46:38
+ * @LastEditTime: 2022-01-28 18:08:30
  * @Description: About file
  */
 
@@ -20,9 +20,10 @@ const Utils = {
         let ret = ''
         if(err.port && err.syscall=='connect' && err.code=='ECONNREFUSED'){
             ret = '请查看端口'+err.port+'是否启动'
-        }
+        }        
 
         if(ret==''){
+            console.log(err)
             ret = '未处理异常：'+err.toString()
         }
         return ret;
