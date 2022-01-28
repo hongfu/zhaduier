@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 15:48:59
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 13:14:59
+ * @LastEditTime: 2022-01-28 13:43:47
  * @Description: service config file
  */
 
@@ -18,7 +18,7 @@ const options = {
         host: 'localhost',
         username: 'postgres',
         password: 'postgres',
-        database: 'ncm',
+        database: 'postgres',
         dialect: 'postgres',
         pool: {
             max: 5,
