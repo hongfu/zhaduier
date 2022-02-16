@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-26 13:48:46
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 22:35:01
+ * @LastEditTime: 2022-02-16 12:14:53
  * @Description: readme file
 -->
 # zhaduier
@@ -32,6 +32,8 @@
 关于开发hrm，可以自己选用合适的方式，我就是supervisor
 mqtt配置文件错误导致的异常需要捕获处理,另外由于性能考虑不能每次重新建立连接，需要保存channel实例使用,总之在消息订阅部分会需要更多工作
 
+### 框架整理 2022-2-16
+框架加入underscore引用
 ### 框架整理 2022-1-28
 不熟悉sequelize，但不影响使用，框架新加了一些异常捕获处理，会逐步完善。
 

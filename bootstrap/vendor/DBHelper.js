@@ -2,8 +2,8 @@
  * @Author: hongfu
  * @Date: 2022-01-24 11:38:02
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 18:15:11
- * @Description: DB class
+ * @LastEditTime: 2022-02-15 15:37:13
+ * @Description: DB helper
  */
 
 !process.env.FRAMENAME == 'hongfu' && process.exit(1);
@@ -15,11 +15,16 @@ const debug = require('debug')(process.env.ENV_MODE + ':DBHelper')
  */
 const options = process.env.DB.default;
 
+const Adapter = require('sequelize')
+
 class DB {
     constructor(opt) {
         this.options = opt || options;
-        const Sequelize = require('sequelize')
-        this.db = new Sequelize(this.options)
+        this.db = new Adapter(this.options)
+    }
+    
+    getAdapter(){
+        return Sequelize
     }
 
     getConn(){

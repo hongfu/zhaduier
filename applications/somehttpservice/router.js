@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 16:47:13
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 13:25:54
+ * @LastEditTime: 2022-02-16 12:11:46
  * @Description: service router file
  */
 const debug = require('debug')('dev:' + __filename);
@@ -16,7 +16,7 @@ router.get('/', async (ctx, next) => {
     db.test();
     ctx.redis.test();
     
-    let res = new ctx.HttpResponse(200,'服务测试成功',{});
+    let res = new ctx.HttpResponse(200,'服务测试成功',ctx.config);
     ctx.body = JSON.stringify(res);
 })
 
