@@ -3,7 +3,7 @@
  * @Author: hongfu
  * @Date: 2022-01-23 10:03:25
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-29 11:36:54
+ * @LastEditTime: 2022-02-16 14:08:58
  * @Description: 服务端主框架入口
  */
 
@@ -14,6 +14,8 @@ process.env = ENV;
 const debug = require('debug')(process.env.ENV_MODE + ':Bootstrap')
 
 const U = require('../bootstrap/utils')
+
+let port = null
 
 /**
  * @description: 启动http服务
@@ -59,7 +61,7 @@ process.on('unhandledRejection', (err) => {
  * @return {*}
  */
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+  port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe

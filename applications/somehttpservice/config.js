@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 15:48:59
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-16 12:00:59
+ * @LastEditTime: 2022-02-16 13:47:30
  * @Description: service config file
  */
 
@@ -26,7 +26,7 @@ const options = {
             idle: 10000
         }
     },
-    serv_mqtt_use: true,//是否需要消息服务,调用方式ctx.MQ
+    serv_mqtt_use: false,//是否需要消息服务,调用方式ctx.MQ
     serv_mqtt: {
         hostname: 'localhost'
         , port: 5672
@@ -38,7 +38,7 @@ const options = {
             enabled: false
         }
     },
-    serv_redis_use: true,//是否需要缓存服务,调用方式ctx.RD
+    serv_redis_use: false,//是否需要缓存服务,调用方式ctx.RD
     serv_redis: [{
         port: 6379,
         hostname: 'localhost',

@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 15:45:06
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 12:44:59
+ * @LastEditTime: 2022-02-16 12:37:59
  * @Description: service entry file
  */
 
@@ -12,8 +12,7 @@ const { HttpService } = require('../../bootstrap/services');
 
 const app = new HttpService(require('./config'));
 
-const route = require('./router.js')
-
-route(app);
+require('./model.js')(app);//加载数据模型
+require('./router.js')(app);//加载路由
 
 module.exports = app

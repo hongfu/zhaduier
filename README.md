@@ -2,17 +2,29 @@
  * @Author: hongfu
  * @Date: 2022-01-26 13:48:46
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-16 12:14:53
+ * @LastEditTime: 2022-02-16 14:32:05
  * @Description: readme file
 -->
 # zhaduier
 基于nodejs展开的后端服务框架，使用过程中会不断完善
 
+# 关于部署
+1、 环境配置可采用docker，直接默认安装和启动。当然也可以自行安装所有环境，端口参照 .env 中设置，将端口暴露即可。  
+
+2、 部署环境后，进入 ./applications/somehttpservice 路径下，修改config.js中的配置信息与实际环境一直。  
+
+3、 如果是现有数据库，在当前路径下 运行 node auto-models.js 会自动生成 models，之后就可正常开发了。   
+
+4、 如果是根据model生成数据库，则需要 运行somemodelname.sync()生成数据表。  
+
+5、 
+
 ## 目录结构
 .env 框架默认配置  
 ├── applications #开发目录  
 │   ├── servicename #某个服务，以单独目录方式开发  
-│   │   ├── config.js #服务单独配置文件，优先级高于框架基础配置   
+│   │   ├── config.js #服务单独配置文件，优先级高于框架基础配置
+│   │   ├── auto-models.js #基于数据库生成models，方式：node auto-models.js,可以修改文件默认生成路径  
 │   │   └── index.js #服务入口  
 │   └── servicesList.js #要启动的服务列表  
 ├── bin  

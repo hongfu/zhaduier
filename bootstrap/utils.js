@@ -2,8 +2,8 @@
  * @Author: hongfu
  * @Date: 2022-01-28 12:48:30
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 18:08:30
- * @Description: About file
+ * @LastEditTime: 2022-02-16 12:18:20
+ * @Description: utils zhaduier
  */
 
 !process.env.FRAMENAME == 'hongfu' && process.exit(1);
