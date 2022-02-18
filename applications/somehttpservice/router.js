@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 16:47:13
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-18 10:40:09
+ * @LastEditTime: 2022-02-18 13:18:19
  * @Description: service router file
  */
 const debug = require('debug')('dev:' + __filename);
@@ -47,62 +47,52 @@ router.get('/redis', async (ctx, next) => {
 })
 
 router.get('/mqtt/send', async (ctx, next) => {
-    //测试mq
-    let res = ''
+    //测试生产
     let mq = ctx.mqtt
-    let r
-    //publish
-    r = await mq.send('a1','at:content data',async ()=>{
-        res += JSON.stringify({errcode:0,msg:'mqtt发布测试成功',data:{chanel:'a1',data:'at:content data'}});
-        return;
+    let res = await mq.send('a1','at:content data',async ()=>{
+        return JSON.stringify({errcode:0,msg:'mqtt生产测试成功',data:{chanel:'a1',data:'at:content data'}});
     })
     ctx.body = res
 })
 
 router.get('/mqtt/receive', async (ctx, next) => {
-    //测试mq
-    let res = ''
+    //测试消费
     let mq = ctx.mqtt
-    let r
-    //subscribe
-    await mq.receive('a1',(data)=>{
-        res += JSON.stringify({errcode:0,msg:'mqtt订阅测试成功',data: {chanel:'a1',data:data}});
+    const consumer1 = async (d)=>{
+        debug('consumer1 got:',d)
+    }
+    const consumer2 = async (d)=>{
+        debug('consumer2 got:',d)
+    }
+    
+    await mq.receive('a1',consumer1)
+    await mq.receive('a1',consumer2)
+    ctx.body = JSON.stringify({errcode:0,msg:'mqtt消费添加成功',data:{chanel:'a1'}});;
+})
+
+router.get('/mqtt/publish', async (ctx, next) => {
+    //测试发布
+    let mq = ctx.mqtt
+    let res = await mq.publish('testEx','test.group1.user1','publish content1', async ()=>{
+        return JSON.stringify({errcode:0,msg:'mqtt发布测试成功',data:{chanel:'a1',data:'publish content1'}});
     })
     ctx.body = res;
 })
 
-router.get('/mqtt/watch', async (ctx, next) => {
-    //测试mq
-    let res = ''
+router.get('/mqtt/subscribe', async (ctx, next) => {
+    //测试订阅
     let mq = ctx.mqtt
-    let queueName = 'a1'
-    //listener
-    let cb = (data)=>{
-        console.log('监视'+queueName+'频道并获得：',data)
+    const subscriber1 = async (d)=>{
+        debug('subscriber1 got:',d)
     }
-    mq.bindListener(queueName,cb)
-    mq.watch()
+    const subscriber2 = async (d)=>{
+        debug('subscriber2 got:',d)
+    }
 
-    ctx.body = res;
-})
+    await mq.subscribe('testEx','testQue1','test.#',subscriber1)
+    await mq.subscribe('testEx','testQue2','test.#',subscriber2)
 
-router.get('/mqtt/stopwatch', async (ctx, next) => {
-    //测试mq
-    let res = ''
-    let mq = ctx.mqtt
-    mq.stopWatch()
-
-    ctx.body = res;
-})
-
-router.get('/mqtt/stopwatch/:queue', async (ctx, next) => {
-    //测试mq
-    const { queue } = ctx.params
-    let res = ''
-    let mq = ctx.mqtt
-    mq.stopWatch(queue)
-
-    ctx.body = res;
+    ctx.body = JSON.stringify({errcode:0,msg:'mqtt订阅添加成功',data:{}});;
 })
 
 module.exports = (app) => {

@@ -2,8 +2,8 @@
  * @Author: hongfu
  * @Date: 2022-01-24 11:38:02
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-15 15:37:13
- * @Description: DB helper
+ * @LastEditTime: 2022-02-18 10:49:48
+ * @Description: 数据库处理，orm
  */
 
 !process.env.FRAMENAME == 'hongfu' && process.exit(1);

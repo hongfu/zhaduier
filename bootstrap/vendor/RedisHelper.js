@@ -2,8 +2,8 @@
  * @Author: hongfu
  * @Date: 2022-01-24 11:38:02
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-16 16:30:48
- * @Description: Redis class
+ * @LastEditTime: 2022-02-18 10:50:25
+ * @Description: redis，内存缓存，支持常用操作
  */
 
 !process.env.FRAMENAME == 'hongfu' && process.exit(1);
