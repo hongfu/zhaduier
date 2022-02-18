@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "ava": "^4.0.1",
-    "sequelize-auto": "^0.8.8",
-    "superkoa": "^1.0.3"
+    "sequelize-auto": "^0.8.8"
   }
 }
