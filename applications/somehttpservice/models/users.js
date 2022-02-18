@@ -1,3 +1,10 @@
+/*
+ * @Author: hongfu
+ * @Date: 2022-02-16 13:55:06
+ * @LastEditors: hongfu
+ * @LastEditTime: 2022-02-16 14:57:48
+ * @Description: About file
+ */
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('users', {
@@ -7,11 +14,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    first_name: {
+    nick_name: {
       type: DataTypes.STRING(255),
       allowNull: false
     },
-    last_name: {
+    real_name: {
       type: DataTypes.STRING(255),
       allowNull: true
     }

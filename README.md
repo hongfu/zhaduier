@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-26 13:48:46
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-16 14:42:27
+ * @LastEditTime: 2022-02-16 14:53:42
  * @Description: readme file
 -->
 # zhaduier
@@ -16,7 +16,7 @@
 
 2、 部署环境后，进入 ./applications/somehttpservice 路径下，修改config.js中的配置信息与实际环境一直。  
 
-3、 如果是现有数据库，在当前路径下 运行 node auto-models.js 会自动生成 models，之后就可正常开发了。   
+3、 如果是现有数据库，在当前路径下 运行 node auto-models.js 会自动生成 models，之后就可正常开发了。为了安全要移走这个文件。   
 
 4、 如果是根据model生成数据库，则需要 运行somemodelname.sync()生成数据表。  
 

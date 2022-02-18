@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 11:38:02
  * @LastEditors: hongfu
- * @LastEditTime: 2022-01-28 12:57:28
+ * @LastEditTime: 2022-02-16 16:30:48
  * @Description: Redis class
  */
 
@@ -22,6 +22,11 @@ class Cache {
         this.cache = Redis.createClient(this.options);
     }
 
+    /**
+     * @description: 读取缓存
+     * @param {*} key string 键
+     * @return {*}
+     */    
     get = function (key) {
         let _self = this;
         return new Promise((resolve, reject) => {
@@ -36,6 +41,12 @@ class Cache {
 
     }
 
+    /**
+     * @description: 设置缓存信息
+     * @param {*} key string 键
+     * @param {*} data object 数据
+     * @return {*}
+     */    
     set = function (key, data) {
         let _self = this;
         return new Promise((resolve, reject) => {
@@ -49,6 +60,12 @@ class Cache {
         })
     }
 
+    /**
+     * @description: 缓存信息过期设置
+     * @param {*} key string 键
+     * @param {*} tm int 过期时间，单位秒
+     * @return {*}
+     */    
     cancel = function (key, tm) {
         let _self = this;
         return new Promise((resolve, reject) => {
@@ -62,6 +79,9 @@ class Cache {
         })
     }
 
+    /**
+     * @description: redis自检测试
+     */
     test() {
         let _self = this;
         _self.set('key1', 'test').then(res => debug('redis 存储自检结束', res)).catch(err => debug('redis 存储自检错误', err));
