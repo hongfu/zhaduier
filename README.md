@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-26 13:48:46
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-18 13:34:31
+ * @LastEditTime: 2022-02-18 14:46:37
  * @Description: readme file
 -->
 # zhaduier
@@ -24,7 +24,7 @@
 .env 框架默认配置  
 ├── applications #开发目录  
 │   ├── somehttpservice #某个服务，以单独目录方式开发  
-│   │   ├── config.js #服务单独配置文件，加载优先级高于框架基础配置
+│   │   ├── config.js #服务单独配置文件，加载优先级高于框架基础配置  
 │   │   ├── auto-models.js #基于数据库生成models，方式：node auto-models.js,可以修改文件默认生成路径  
 │   │   ├── router.js #基本功能演示，详细的可以查看代码中的注释  
 │   │   └── index.js #服务入口  
