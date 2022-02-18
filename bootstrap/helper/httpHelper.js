@@ -2,8 +2,8 @@
  * @Author: hongfu
  * @Date: 2022-01-24 17:02:59
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-16 12:41:53
- * @Description: service helper file 扩展koa类 支持json输出 
+ * @LastEditTime: 2022-02-18 15:28:39
+ * @Description: 扩展koa类,并加载环境配置
  */
 !process.env.FRAMENAME == 'hongfu' && process.exit(1);
 

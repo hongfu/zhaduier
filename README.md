@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-26 13:48:46
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-18 14:46:37
+ * @LastEditTime: 2022-02-18 17:15:28
  * @Description: readme file
 -->
 # zhaduier
@@ -27,7 +27,7 @@
 │   │   ├── config.js #服务单独配置文件，加载优先级高于框架基础配置  
 │   │   ├── auto-models.js #基于数据库生成models，方式：node auto-models.js,可以修改文件默认生成路径  
 │   │   ├── router.js #基本功能演示，详细的可以查看代码中的注释  
-│   │   └── index.js #服务入口  
+│   │   └── index.js #服务入口  **ws.js是在相同端口提供的websocket支持  
 │   └── servicesList.js #要启动的服务列表  
 ├── bin  
 │   └── bootstrap #框架入口  

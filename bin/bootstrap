@@ -3,7 +3,7 @@
  * @Author: hongfu
  * @Date: 2022-01-23 10:03:25
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-16 14:08:58
+ * @LastEditTime: 2022-02-18 16:13:03
  * @Description: 服务端主框架入口
  */
 
@@ -23,15 +23,12 @@ let port = null
  * @param {*} options
  * @return {*}
  */
-const start_http_service = (app) => {
-  let http = require('http');
-  let server = http.createServer(app.callback());
-  server.serv_name = app.context.config.serv_name
-  server.listen(normalizePort(app.context.config.serv_port), app.context.config.serv_host);
-  server.on('error', onError);
-  server.on('listening', onListening);
+const start_http_service = (app,config) => {
+  app.serv_name = config.serv_name
+  app.listen(normalizePort(config.serv_port), config.serv_host);
+  app.on('error', onError);
+  app.on('listening', onListening);
 }
-
 
 /*
 *需要启动的服务列表
@@ -40,7 +37,7 @@ const services_list = require('../applications/servicesList');
 //服务加载
 for (let i = 0; i < services_list.length; i++) {
   let serv = services_list[i];
-  serv.context.config.serv_type == 'http' && start_http_service(serv);
+  serv.config.serv_type == 'http' && start_http_service(serv.app,serv.config);
 }
 
 //框架异常捕获

@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 16:47:13
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-18 13:31:17
+ * @LastEditTime: 2022-02-18 17:14:35
  * @Description: service router file
  */
 const debug = require('debug')('dev:' + __filename);
@@ -93,6 +93,25 @@ router.get('/mqtt/subscribe', async (ctx, next) => {
     await mq.subscribe('testEx','testQue2','test.#',subscriber2)
 
     ctx.body = JSON.stringify({errcode:0,msg:'mqtt订阅添加成功',data:{}});;
+})
+
+router.get('/ws', async (ctx, next) => {
+    //测试ws请求
+    debug('模拟发起ws请求',ctx.config.serv_host,ctx.config.serv_port)
+    let res
+    const WebSocket = require('ws')
+    const ws = new WebSocket('ws://'+ctx.config.serv_host+':'+ctx.config.serv_port)
+    
+    ws.on('open', () => {
+        ws.send('i am a client');
+    })
+    
+    ws.on('message',(d)=>{
+        debug('ws client got:',d.toString())
+        res = d.toString()
+        ws.close()
+    })
+
 })
 
 module.exports = (app) => {
