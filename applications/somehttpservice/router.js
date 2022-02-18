@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-24 16:47:13
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-18 13:18:19
+ * @LastEditTime: 2022-02-18 13:31:17
  * @Description: service router file
  */
 const debug = require('debug')('dev:' + __filename);
@@ -22,7 +22,7 @@ router.get('/database', async (ctx, next) => {
 })
 
 router.get('/models', async (ctx, next) => {
-    //测试模型
+    //测试数据模型
     let db = ctx.db.getConn()
     let r = await db.models.users.findAll();
     let res = {errcode:0,msg:'数据模型users测试成功',data:r};

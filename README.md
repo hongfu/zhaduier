@@ -2,7 +2,7 @@
  * @Author: hongfu
  * @Date: 2022-01-26 13:48:46
  * @LastEditors: hongfu
- * @LastEditTime: 2022-02-18 13:23:41
+ * @LastEditTime: 2022-02-18 13:34:31
  * @Description: readme file
 -->
 # zhaduier
@@ -23,9 +23,10 @@
 ## 目录结构
 .env 框架默认配置  
 ├── applications #开发目录  
-│   ├── servicename #某个服务，以单独目录方式开发  
-│   │   ├── config.js #服务单独配置文件，优先级高于框架基础配置
+│   ├── somehttpservice #某个服务，以单独目录方式开发  
+│   │   ├── config.js #服务单独配置文件，加载优先级高于框架基础配置
 │   │   ├── auto-models.js #基于数据库生成models，方式：node auto-models.js,可以修改文件默认生成路径  
+│   │   ├── router.js #基本功能演示，详细的可以查看代码中的注释  
 │   │   └── index.js #服务入口  
 │   └── servicesList.js #要启动的服务列表  
 ├── bin  
@@ -42,8 +43,8 @@
 └── package.json  
 
 ##未来
-关于开发hrm，可以自己选用合适的方式，我就是supervisor
-mqtt配置文件错误导致的异常需要捕获处理,另外由于性能考虑不能每次重新建立连接，需要保存channel实例使用,总之在消息订阅部分会需要更多工作
+关于开发hrm，可以自己选用合适的方式，我就是supervisor。  
+
 
 ### 框架整理 2022-2-18
 mqtt部分：消息发布和订阅，队列发送和接收。发布根据exchange发送，定义topic匹配模式，订阅相同消息需要设置不同的队列名称参数，这样交换机接收到发布的消息就会复制分发到不同的队列中，订阅了绑定队列的都可以接收到。
